@@ -1,0 +1,44 @@
+{
+  "name": "Registration",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "dataSource": "mongo",
+  "properties": {
+    "Price": {
+      "type": "number",
+      "required": false
+    },
+    "NeedsJersey": {
+      "type": "boolean",
+      "required": true
+    },
+    "JerseySize": {
+      "type": "string"
+    },
+    "Friends": {
+      "type": "string"
+    },
+    "CanPlayKeeper": {
+      "type": "boolean",
+      "required": true
+    },
+    "PaymentConfirmation": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "Season": {
+      "type": "belongsTo",
+      "model": "Season",
+      "foreignKey": "SeasonId"
+    },
+    "Player": {
+      "type": "belongsTo",
+      "model": "Player",
+      "foreignKey": "PlayerId"
+    }
+  },
+  "acls": [],
+  "methods": []
+}

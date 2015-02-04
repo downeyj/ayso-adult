@@ -1,0 +1,43 @@
+<form>
+
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input type="text" class="form-control" id="firstName" placeholder="First Name" ng-model="Player.FirstName">
+  </div>
+
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input type="text" class="form-control" id="lastName" placeholder="last Name" ng-model="Player.LastName">
+  </div>
+
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="Player.Resident">Foster City Resident?
+    </label>
+  </div>
+
+  <div class="radio">
+    <label>
+      <input type="radio" name="gender" value="Female" ng-model="Player.Gender">
+        Female
+    </label>
+  </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="gender" value="Male" ng-model="Player.Gender">
+        Male
+    </label>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" placeholder="Email" ng-model="Player.email">
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" placeholder="Password" ng-model="Player.password"  id="password">
+  </div>
+  
+  <button type="submit" class="btn btn-default btn-primary" ng-click="createPlayer()">Submit</button>
+</form>

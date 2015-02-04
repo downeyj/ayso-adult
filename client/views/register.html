@@ -1,0 +1,31 @@
+<form>
+
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="Registration.NeedsJersey">Do you need a jersey?
+    </label>
+    *AYSO Adult League jerseys are required. No jersey, no play. If you do not own one, please check off this box.
+  </div>
+
+  <div class="form-group">
+    <label for="jerseySize">Jersey Size</label>
+    <select id="jerseySize" ng-model="Registration.JerseySize">
+      <option>Small</option>
+      <option>Medium</option>
+      <option>Large</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="friends">Friends</label>
+    <input type="text" class="form-control" id="friends" placeholder="Friends you would like on your team..." ng-model="Player.Friends">
+  </div> 
+
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="Registration.CanPlayKeeper">Can you play keeper?
+    </label>
+  </div>
+ 
+  <button type="submit" class="btn btn-default btn-primary" ng-click="registerForSeason()">Submit</button>
+</form>

@@ -1,0 +1,42 @@
+{
+  "name": "Player",
+  "base": "User",
+  "idInjection": true,
+  "dataSource": "mongo",
+  "properties": {
+    "FirstName": {
+      "type": "string",
+      "required": true
+    },
+    "LastName": {
+      "type": "string",
+      "required": true
+    },
+    "Resident": {
+      "type": "boolean",
+      "required": true
+    },
+    "HasJersey": {
+      "type": "boolean",
+      "required": false
+    },
+    "Gender": {
+      "type": "string",
+      "required": true
+    },
+    "AdminScore": {
+      "type": "number",
+      "required": false
+    }
+  },
+  "validations": [],
+  "relations": {
+    "Registrations": {
+      "type": "hasMany",
+      "model": "Registration",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}

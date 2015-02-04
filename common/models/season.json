@@ -1,0 +1,54 @@
+{
+  "name": "Season",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "dataSource": "mongo",
+  "properties": {
+    "Year": {
+      "type": "number",
+      "required": true
+    },
+    "Season": {
+      "type": "string",
+      "required": true
+    },
+    "GamesStart": {
+      "type": "date",
+      "required": true
+    },
+    "RegistrationOpens": {
+      "type": "date",
+      "required": true
+    },
+    "RegistrationCloses": {
+      "type": "date",
+      "required": true
+    },
+    "JerseyCost": {
+      "type": "number",
+      "required": true
+    },
+    "AYSONationalCost": {
+      "type": "number",
+      "required": true
+    },
+    "AYSOLocalCost": {
+      "type": "number",
+      "required": true
+    },
+    "NonResidentCost": {
+      "type": "number",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "Registrations": {
+      "type": "hasMany",
+      "model": "Registration",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": []
+}
