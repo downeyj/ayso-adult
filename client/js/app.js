@@ -1,9 +1,10 @@
 var app = angular.module('app', ['lbServices','ui.router'])
-  .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider, $urlRouterProvider,$httpProvider) {
-    
-    app.ayso= {};
-
+  .config(['$stateProvider', '$urlRouterProvider', '$httpProvider', function($stateProvider, $urlRouterProvider,$httpProvider) { 
     $stateProvider
+      .state('home', {
+        url: '/home',
+        templateUrl: 'views/home.html'
+      })  
       .state('login', {
         url: '/login',
         templateUrl: 'views/login.html',
@@ -18,8 +19,12 @@ var app = angular.module('app', ['lbServices','ui.router'])
         url: '/register',
         templateUrl: 'views/register.html',
         controller: 'RegisterCtrl'
+      })
+      .state('done',{
+        url: '/done',
+        templateUrl: 'views/done.html'
       });
-    $urlRouterProvider.otherwise('login');
+    $urlRouterProvider.otherwise('/home');
 
     $httpProvider.interceptors.push(function($q, $location) {
       return {
@@ -34,37 +39,41 @@ var app = angular.module('app', ['lbServices','ui.router'])
 });
 }]);
 
-app.controller('LoginCtrl', function($scope, Player, $location) {
+app.controller('LoginCtrl', function($scope, Player, $location, appState) {
   $scope.login = function() {
     console.log('login method called');
     $scope.loginResult = Player.login($scope.credentials,
       function(data) {
-         app.ayso.player = data.user;
+         appState.currentPlayer = data.user;
+         $location.path('/register');
       }, function(res) {
         console.log('log in error:' + res);
       });
   };
 });
 
-app.controller('PlayerCtrl', function($scope, Player) {
+app.controller('PlayerCtrl', function($scope, Player, appState) {
   $scope.createPlayer = function() {
     var result = Player.create($scope.Player, function(data) {
-      $location.path('/registration');
+      appState.currentPlayer = data.user;
+      $location.path('/register');
     }, function(err) {
       console.log('error creating player: ' + err);
     });
   };
 });
 
-app.controller('RegisterCtrl', function($scope, Player, Registration) {
+app.controller('RegisterCtrl', function($scope, Player, appState) {
   $scope.registerForSeason = function() {
-
-    Player.cklm
-
-    var result = Player.create($scope.Player, function(data) {
-      $location.path('/registration');
+    Player.Registrations.create({ id: appState.currentPlayer.id }, $scope.Registration, function(data) {
+       $location.path('/done');
     }, function(err) {
-      console.log('error creating player: ' + err);
+       console.log(err);
     });
   };
 });
+
+app.factory('appState', function() {
+    return {};
+});
+
